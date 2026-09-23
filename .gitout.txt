@@ -1,9 +1,0 @@
-﻿git : warning: re-init: ignored --initial-branch=main
-所在位置 行:452 字符: 1
-+ git -C "D:\testArea\chinese-novelist" init -b main 2>&1 | Out-File -F ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (warning: re-ini...ial-branch=main 
-   :String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
-Reinitialized existing Git repository in D:/testArea/chinese-novelist/.git/
