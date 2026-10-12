@@ -63,10 +63,6 @@
       "zh": "让五位模拟读者给最近三章打分，并告诉我扣分最多的维度是哪个、为什么。"
     },
     {
-      "en": "Audit the opening hook of every chapter and where each one breaks off - are they strong enough to keep readers scrolling, and where does attention sag?",
-      "zh": "帮我审一下各章的开篇钩子和断章位置，够不够留住读者，哪几章读起来会让人想划走。"
-    },
-    {
       "en": "I just finished chapter X. Check whether the timeline still adds up and whether anything contradicts earlier chapters - especially dates, numbers, who is present, and anything I rearranged.",
       "zh": "我刚写完第 X 章，帮我查时间线还对不对得上、有没有前后打架的地方——尤其是日期、数字、谁在场，以及我刚重排过的段落。"
     }

@@ -71,7 +71,7 @@ avatars/ 下 9 张 PNG（团队封面 + 主理人 + 7 名团员），可手动�
 放置路径：
 
 ```
-C:\Users\Administrator\.workbuddy\plugins\marketplaces\my-experts\plugins\novel-review\
+%USERPROFILE%\.workbuddy\plugins\marketplaces\my-experts\plugins\novel-review\
 ```
 
 注册到专家中心：
