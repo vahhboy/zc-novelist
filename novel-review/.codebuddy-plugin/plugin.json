@@ -1,0 +1,132 @@
+{
+  "name": "novel-review",
+  "version": "1.0.0",
+  "description": "An eight-role fiction review council that audits outline alignment, canon consistency, plot coherence, timeline-logic integrity and prose rhythm, scores drafts through five simulated reader personas, and delivers executable revision plans.",
+  "agents": [
+    "./agents/novel-review-team-lead.md",
+    "./agents/novel-outline-checker.md",
+    "./agents/novel-canon-keeper.md",
+    "./agents/novel-plot-tracker.md",
+    "./agents/novel-logic-auditor.md",
+    "./agents/novel-prose-analyst.md",
+    "./agents/novel-reader-panel.md",
+    "./agents/novel-revision-advisor.md"
+  ],
+  "skills": ["./skills/novel-review-kit"],
+
+  "expertType": "team",
+  "agentName": "novel-review-team-lead",
+  "teamInfo": {
+    "leadAgent": "novel-review-team-lead",
+    "memberAgents": [
+      "novel-outline-checker",
+      "novel-canon-keeper",
+      "novel-plot-tracker",
+      "novel-logic-auditor",
+      "novel-prose-analyst",
+      "novel-reader-panel",
+      "novel-revision-advisor"
+    ]
+  },
+
+  "displayName": {
+    "en": "Manuscript Review Room",
+    "zh": "阅稿堂"
+  },
+  "profession": {
+    "en": "Manuscript Review Room",
+    "zh": "阅稿堂"
+  },
+  "displayDescription": {
+    "en": "Council-style fiction review: checks outline deviation, catches canon contradictions, keeps a chapter-by-chapter time ledger to close plot holes, then scores the draft through simulated readers and gives actionable fixes.",
+    "zh": "会诊式审校：比对大纲偏离、揪设定矛盾，逐章累计时间账堵死逻辑漏洞，虚拟读者双轨打分并给落地改法。"
+  },
+  "avatar": "avatars/team.png",
+  "categoryId": "06-ContentCreative",
+  "defaultInitPrompt": {
+    "zh": "我想让你审校《XXX》第 X 章到第 Y 章。现行大纲是 XX 文件，世界观设定是 XX 文件。请对照大纲检查偏离、查找设定矛盾与剧情断裂，并让模拟读者团打分。",
+    "en": "Please review chapters X to Y of my novel. The current outline and worldbuilding docs are attached. Check outline deviations, canon contradictions and plot breaks, then have the reader panel score it."
+  },
+  "plugin": "novel-review",
+  "tags": [
+    { "en": "Outline Alignment", "zh": "大纲一致性校对" },
+    { "en": "Timeline & Logic Audit", "zh": "时间与逻辑稽查" },
+    { "en": "Simulated Reader Scoring", "zh": "模拟读者评分" }
+  ],
+  "quickPrompts": [
+    {
+      "en": "Please review chapters X to Y of my novel. The current outline and worldbuilding docs are attached. Check outline deviations, canon contradictions and plot breaks, then have the reader panel score it.",
+      "zh": "我想让你审校《XXX》第 X 章到第 Y 章。现行大纲是 XX 文件，世界观设定是 XX 文件。请对照大纲检查偏离、查找设定矛盾与剧情断裂，并让模拟读者团打分。"
+    },
+    {
+      "en": "Have five simulated readers score my latest three chapters, tell me which dimensions lost the most points and why.",
+      "zh": "让五位模拟读者给最近三章打分，并告诉我扣分最多的维度是哪个、为什么。"
+    },
+    {
+      "en": "Audit the opening hook of every chapter and where each one breaks off - are they strong enough to keep readers scrolling, and where does attention sag?",
+      "zh": "帮我审一下各章的开篇钩子和断章位置，够不够留住读者，哪几章读起来会让人想划走。"
+    },
+    {
+      "en": "I just finished chapter X. Check whether the timeline still adds up and whether anything contradicts earlier chapters - especially dates, numbers, who is present, and anything I rearranged.",
+      "zh": "我刚写完第 X 章，帮我查时间线还对不对得上、有没有前后打架的地方——尤其是日期、数字、谁在场，以及我刚重排过的段落。"
+    }
+  ],
+  "members": [
+    {
+      "id": "novel-review-team-lead",
+      "displayName": { "en": "Wen", "zh": "温定夺" },
+      "profession": { "en": "Review Editor-in-Chief", "zh": "审稿总编" },
+      "avatar": "avatars/novel-review-team-lead.png",
+      "role": "lead"
+    },
+    {
+      "id": "novel-outline-checker",
+      "displayName": { "en": "Xu", "zh": "许合辙" },
+      "profession": { "en": "Outline Continuity Editor", "zh": "大纲对照编辑" },
+      "avatar": "avatars/novel-outline-checker.png",
+      "role": "member"
+    },
+    {
+      "id": "novel-canon-keeper",
+      "displayName": { "en": "Shen", "zh": "沈无漏" },
+      "profession": { "en": "Canon and Worldbuilding Keeper", "zh": "设定考据" },
+      "avatar": "avatars/novel-canon-keeper.png",
+      "role": "member"
+    },
+    {
+      "id": "novel-plot-tracker",
+      "displayName": { "en": "Lu", "zh": "陆牵丝" },
+      "profession": { "en": "Plot Coherence Analyst", "zh": "剧情连贯分析师" },
+      "avatar": "avatars/novel-plot-tracker.png",
+      "role": "member"
+    },
+    {
+      "id": "novel-logic-auditor",
+      "displayName": { "en": "Zhong", "zh": "钟不紊" },
+      "profession": { "en": "Timeline and Logic Auditor", "zh": "时序与逻辑稽查" },
+      "avatar": "avatars/novel-logic-auditor.png",
+      "role": "member"
+    },
+    {
+      "id": "novel-prose-analyst",
+      "displayName": { "en": "Xue", "zh": "薛斟句" },
+      "profession": { "en": "Prose and Rhythm Analyst", "zh": "文字与节奏分析师" },
+      "avatar": "avatars/novel-prose-analyst.png",
+      "role": "member"
+    },
+    {
+      "id": "novel-reader-panel",
+      "displayName": { "en": "He", "zh": "何知味" },
+      "profession": { "en": "Reader Panel Moderator", "zh": "模拟读者评审官" },
+      "avatar": "avatars/novel-reader-panel.png",
+      "role": "member"
+    },
+    {
+      "id": "novel-revision-advisor",
+      "displayName": { "en": "Fang", "zh": "方可行" },
+      "profession": { "en": "Revision Consultant", "zh": "修订顾问" },
+      "avatar": "avatars/novel-revision-advisor.png",
+      "role": "member"
+    }
+  ]
+}
