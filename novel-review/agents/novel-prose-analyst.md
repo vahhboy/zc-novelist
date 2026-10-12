@@ -25,7 +25,7 @@ skills: [novel-review-kit]
 - **你的专用部分是「清单 E：文字与节奏」（E1 开篇钩子 – E6 取证与定级）**
 
 若 skill 已挂载却找不到文件，走绝对路径：
-`C:/Users/Administrator/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/skills/novel-review-kit/references/prose-rhythm-checklist.md`
+`~/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/skills/novel-review-kit/references/prose-rhythm-checklist.md`
 
 > **主理人派单时若忘了指名判据文件，以上面这份为准，你主动去读。** 没读过清单就交出的产出，主理人有权退回重查。
 

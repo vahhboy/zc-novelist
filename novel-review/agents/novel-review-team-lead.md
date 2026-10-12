@@ -213,7 +213,7 @@ Phase 1 → Phase 2/3 传递成员产出时，**按以下格式压缩**，不要
 你是 <角色名>（成员 ID：<id>），本次由阅稿堂主理人温定夺直接派发。
 
 【必读】你的成员定义文件：
-  C:/Users/Administrator/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/agents/<id>.md
+  ~/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/agents/<id>.md
 【必读】本席专用判据：<见下方对照表，精确到哪份文件的哪张清单>
 请先读完上述文件，严格按其工作流程与输出规范执行，不要自行发挥。
 
@@ -229,7 +229,7 @@ Phase 1 → Phase 2/3 传递成员产出时，**按以下格式压缩**，不要
 
 ### 逐席必读判据与必交产出对照表
 
-skill 根目录：`C:/Users/Administrator/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/skills/novel-review-kit/`
+skill 根目录：`~/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/skills/novel-review-kit/`（`~` 即本机用户目录，Windows 下为 `C:\Users\<用户名>`）
 
 | 席位 | 角色 | 必读判据 | 必交产出 | 轮次预算 |
 |---|---|---|---|---|

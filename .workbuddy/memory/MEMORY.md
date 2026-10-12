@@ -68,6 +68,13 @@
   - 铁律：他**没查出问题也必须交时间轴表**；没给表等于没查。
   - 上面第二节「一致性自检清单」的七维与七条雷区，已同步固化进清单 D，两者口径一致。
 
+- **阅稿堂已安装到本机**（2026-10-12）：`C:\Users\MECHREV\.workbuddy\plugins\marketplaces\my-experts\plugins\novel-review`，已注册进 `my-experts` 的 `marketplace.json`。
+  - 打包/重装的两个坑：**Team 型必须带 `settings.json`**（`{"agent": "<主理人文件名>"}`，缺了 validate 报错、装不上）；**`quickPrompts` 必须恰好 3 条**，多了少了都 error。
+  - 源包改动后要「改源仓库 → 重新 cp 到安装目录 → validate → register → 重打包 zip」一条龙，否则分发出去的 zip 是坏的。
+  - **本机用户级配套 skill 已装入**（2026-10-12）：`C:\Users\MECHREV\.workbuddy\skills\` 下有 `novel-writer`、`expert-watchdog`（此前只有仓库副本，从未真正装过）。两脚本纯标准库、无网络/无删除，安检 P2。
+  - **派发包里禁止硬编码用户目录名**（`Administrator`/`MECHREV` 都不行）——一律用 `~` 或相对路径。曾因 agent MD 里写死 `C:/Users/Administrator/...` 导致成员兜底路径全失效。
+  - 本机 git 身份曾丢失，本仓库已设为 `张驰 <1635762227@qq.com>`（与历史一致）。
+
 ## 五、时间轴硬基准（2026-10-12 全稿会诊重算，写卷二前对照）
 
 - D1 测灵 ≈ 七月廿三｜**D4 上山 ≈ 七月廿六（七月底）**｜D70 洗籍 ≈ 十月初二（初冬 ✓）

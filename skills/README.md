@@ -1,7 +1,7 @@
 # zc-novelist · 配套 Skills
 
 两个配套 skill 的可分发副本，用于**小说创作**与**长流程监控**。
-原始安装位置：`C:\Users\Administrator\.workbuddy\skills\`（用户级，全项目生效）。
+原始安装位置：`%USERPROFILE%\.workbuddy\skills\`（用户级，全项目生效；Windows 下即 `C:\Users\<用户名>\.workbuddy\skills\`）。
 
 | Skill | 解决什么 | 入口 |
 |---|---|---|

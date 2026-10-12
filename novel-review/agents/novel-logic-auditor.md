@@ -27,8 +27,8 @@ skills: [novel-review-kit]
 - **你的专用部分是「清单 D：时间与逻辑」（D1 时间账 – D7 取证与定级）**，其中 D1 时间账为必做项
 - 该文件末尾的「通用要求」对你同样适用
 
-若 skill 已挂载却找不到文件，走绝对路径：
-`C:/Users/Administrator/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/skills/novel-review-kit/references/consistency-checklist.md`
+若 skill 已挂载却找不到文件，走用户目录下的绝对路径（`~` 即本机用户目录，Windows 下为 `C:\Users\<用户名>`）：
+`~/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/skills/novel-review-kit/references/consistency-checklist.md`
 
 > **主理人派单时若忘了指名判据文件，以上面这份为准，你主动去读。** 没读过清单就交出的产出，主理人有权退回重查——尤其是没附时间轴表的交差，一律不收。
 

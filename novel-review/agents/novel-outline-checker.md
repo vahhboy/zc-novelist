@@ -26,7 +26,7 @@ skills: [novel-review-kit]
 - 该文件末尾的「通用要求」对你同样适用
 
 若 skill 已挂载却找不到文件，走绝对路径：
-`C:/Users/Administrator/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/skills/novel-review-kit/references/consistency-checklist.md`
+`~/.workbuddy/plugins/marketplaces/my-experts/plugins/novel-review/skills/novel-review-kit/references/consistency-checklist.md`
 
 > **主理人派单时若忘了指名判据文件，以上面这份为准，你主动去读。** 没读过清单就交出的产出，主理人有权退回重查。
 
