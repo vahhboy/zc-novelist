@@ -1,0 +1,53 @@
+{
+  "_readme": [
+    "只列你这部作品要改的项，其余走脚本内置默认（查看全表：python scripts/relapse_check.py config）。",
+    "改完用 --config 传入：python scripts/relapse_check.py all --file <稿> --config relapse-config.json",
+    "severity 用 --config 里的 levels 覆盖，例如把问号从 P1 降为不查。"
+  ],
+
+  "punctuation_ban": ["？", "！", "?", "!"],
+  "latin_allow": ["md", "py", "json", "txt", "csv", "yaml", "yml"],
+
+  "target_words": [600, 4000],
+  "opening_similarity": 0.55,
+  "dup_similarity": 0.86,
+
+  "watch_slots": [],
+  "slot_top": 40,
+
+  "chapter_regex": "^#{1,6}\\s+第[0-9零〇一二三四五六七八九十百千万两廿卅]{1,8}\\s*章",
+
+  "banned_words": {
+    "现代器物与科技": [
+      "手机", "电脑", "电话", "电视", "马达", "引擎", "电池", "灯泡", "电灯",
+      "注射", "疫苗", "医院", "护士", "警察", "公司", "汽油", "塑料",
+      "照片", "相机", "屏幕", "充电", "开机", "关机", "地铁", "短信", "上网"
+    ],
+    "当代口语与网络语": [
+      "吐槽", "破防", "躺平", "内卷", "社死", "摸鱼", "逆天", "离谱", "裂开"
+    ]
+  },
+
+  "watch_words": {
+    "现代行政与抽象词": [
+      "意识到", "反应过来", "整个过程", "负责", "沟通", "压力", "状态", "系统", "机制",
+      "平台", "方案", "组织", "管理", "提升", "优化", "反馈", "评估", "目标", "情绪",
+      "性格", "意识", "安排", "问题", "没关系", "处理", "控制", "确认", "强调", "信号",
+      "节奏", "逻辑", "模式", "关系", "表情"
+    ]
+  },
+
+  "levels": {
+    "banned_words": "P1",
+    "watch_words": "P2",
+    "latin_noise": "P1",
+    "punctuation": "P1",
+    "meta_ref": "P1",
+    "dup_sentence": "P2",
+    "opening_similarity": "P2",
+    "word_count": "P2",
+    "claim_vs_list": "P0",
+    "split_sum": "P0",
+    "slot_conflict": "P2"
+  }
+}

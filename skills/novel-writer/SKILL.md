@@ -3,9 +3,12 @@ name: novel-writer
 description: >-
   写小说 / 长篇连载的工程化创作技能。以大纲（卷-章-节拍）与 story-time 时间线为硬约束，
   写前生成约束包、写后强制一致性自检（时间倒流、死人出场、知情越界、伏笔逾期/未埋先收、
-  节拍未落地、视角漂移、名词不统一），并支持按修改建议做影响面分析与剧情调整。
+  节拍未落地、视角漂移、名词不统一），并以「防复发守卫」机检 + 错题清单封锁历次审校挑出过的
+  同类错误（计数链断裂、相对时间失效、器物凭空出现、留白被坐实、体例漂移），
+  支持按修改建议做影响面分析与剧情调整。
   Trigger on: 写小说、小说创作、写下一章、章节写作、大纲一致性、时间线冲突、改剧情、
-  修订小说、按建议改稿、伏笔台账、人物设定、novel writing、write chapter、story outline。
+  修订小说、按建议改稿、伏笔台账、人物设定、章节自检、写后检查、防复发、机检、
+  novel writing、write chapter、story outline。
 description_zh: 严格遵守大纲与时间线的小说创作技能，支持按修改建议做影响面分析与剧情调整
 description_en: Outline- and timeline-locked fiction writing with consistency checks and revision impact analysis
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion
@@ -29,6 +32,8 @@ argument-hint: <书名 / 要写的章节 / 修改建议>
 5. **改稿先算影响面**。任何剧情调整，先回答"哪些章节、哪些台账要跟着改"，再动笔。
 6. **冲突时的优先级**（与审校团共用同一套，写审不打架）：
    作者当场声明 > 现行大纲 > 现行世界观 > 正文最早出现处 > 正文最常见写法。
+7. **同一类错不犯第二次。** 被挑出来的问题要落到 `references/relapse-guard.md` 变成条目，
+   下次写作它就是检查表 —— 不这么做，同一批错别字和数字会一遍遍回到稿子里。
 
 ## 工程结构（`init` 生成）
 
@@ -74,7 +79,36 @@ python scripts/novel.py --root <root> check --chapter 5
 
 `check` 退出码：**2 = 有 P0（阻断）｜1 = 只有 P1/P2｜0 = 干净**。
 
-### 第 4 步 · 判定
+### 第 4 步 · 写后：跑防复发守卫
+
+`check` 只验台账（时间线、人物、伏笔）。**文字、数字、器物、留白这层的坑它管不到** ——
+而历次审校真正抓出来的，多半就是这些东西。它们固化成了两件套：
+
+- `references/relapse-guard.md` —— 错题本，每条含症状／为什么犯／怎么查／自查问句
+- `scripts/relapse_check.py` —— 机检，**只报告不改写**（销毁性动作为零）
+
+```bash
+python scripts/relapse_check.py scan  --file chapters/ch005.md
+python scripts/relapse_check.py count --file chapters/ch005.md
+python scripts/relapse_check.py all   --file 正文.md --stop-at '^## 附录' --out notes/relapse.md
+```
+
+| 子命令 | 查什么 | 对应规则 |
+|---|---|---|
+| `scan` | 禁用词、中英混排、标点体例、章节元引用、重复叙述、开头雷同、章字数 | R-23 ~ R-29 |
+| `count` | 声明与列举是否对得上、拆分加总是否闭合、计数槽位漂移 | R-01 / R-02 / R-04 |
+
+退出码与 `check` 一致：**2 = 有 P0（阻断）｜1 = 只有 P1/P2｜0 = 干净**。
+
+两条用法要点（不照做基本白跑）：
+
+- **用 `--start-at` / `--stop-at` 把附录和判据区切出去。** 那里本来就该密密麻麻写数字和编号，
+  拿正文标准去查会刷一屏假警报。
+- **真正互锁的计数写进配置的 `watch_slots`**（如 `["道痕","个碗"]`），它们才会被严格查。
+  其余计数槽位只进附表 —— 剧情演进导致「碗从十七变成十五」和「作者漏改一处」长得一模一样，
+  这个不该由机器拍板。模板见 `templates/relapse-config.json`。
+
+### 第 5 步 · 判定
 
 | 级别 | 含义 | 处置 |
 |---|---|---|
@@ -125,6 +159,16 @@ glossary   add --main 主称呼 --aliases 别名1,别名2
 report     [--out FILE]                                       # 一致性报告
 ```
 
+防复发守卫（`scripts/relapse_check.py`，独立入口，不用 `--root`）：
+
+```
+scan    --file <稿> [--config cfg.json] [--start-at RE] [--stop-at RE] [--out F] [--format md|text|json]
+count   --file <稿> [...]
+all     --file <稿> [...]
+config  [--out F]                       # 打印内置默认配置，改一份自己的从这里起
+checks                                  # 列出全部机检项及其规则编号
+```
+
 Windows 用 `python`，macOS/Linux 用 `python3`。`--root` 默认当前目录。
 
 ## 硬规则
@@ -135,6 +179,8 @@ Windows 用 `python`，macOS/Linux 用 `python3`。`--root` 默认当前目录�
 4. 伏笔必须成对：埋了就要有 `due_chapter`，收了就要 `resolve`。
 5. 涉及剧情走向的调整，**先出方案让用户选**，再动笔。
 6. 作废的大纲/设定版本必须标注，不得作为判据。
+7. 机检没过不许送审。**但机检全绿 ≠ 没问题** —— 因果、知情边界、留白、人物口径这些
+   必须人工过一遍 `relapse-guard.md` 里标 [人] 的条目，机器查不了因果。
 
 ## 与相关能力的衔接
 
@@ -147,4 +193,5 @@ Windows 用 `python`，macOS/Linux 用 `python3`。`--root` 默认当前目录�
 
 - `references/writing-checklist.md` —— 写前 / 写中 / 写后三张清单
 - `references/revision-playbook.md` —— 修改建议的分类、影响面、双方案与连锁同步
-- `templates/` —— `outline.md` / `worldbuilding.md` / `style.md` / 章节模板
+- `references/relapse-guard.md` —— **防复发错题本**（29 条写代码 + 改稿刀口选择原则）
+- `templates/` —— `outline.md` / `worldbuilding.md` / `style.md` / 章节模板 / `relapse-config.json`

@@ -126,10 +126,11 @@ python scripts/novel.py --root <root> sync && python scripts/novel.py --root <ro
 ## 六、改完之后的复核
 
 1. `check --all` —— P0 清零
-2. `report` —— 出一份报告，确认没有新增债务
-3. 若改动属 **beneficial 偏离** → 把新走向写进 `outline.md`，让它成为契约
-4. 若属 **harmful 偏离** → 记进 `notes`，排进下一轮修订
-5. 把这条建议 `notes resolve --id n00X`，闭环
+2. `relapse_check.py count` —— 改过的数字在全书还是同一个吗（本手册第四节同步完才跑）
+3. `report` —— 出一份报告，确认没有新增债务
+4. 若改动属 **beneficial 偏离** → 把新走向写进 `outline.md`，让它成为契约
+5. 若属 **harmful 偏离** → 记进 `notes`，排进下一轮修订
+6. 把这条建议 `notes resolve --id n00X`，闭环
 
 ---
 
